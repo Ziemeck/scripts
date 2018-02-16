@@ -31,23 +31,23 @@ if [[ $# -eq 0 ]]; then
   # ------------------------------------------------------------------------------
 
   if [ ! $1 ]
-          then
-                    usage
-                        else
-                                  echo ${PADDING}
-                                        echo -e "MSF MODULES\nPATH: ${DIR_MSF}"
-                                              echo ${PADDING}
-                                                    # Find msf modules
-                                                          find /usr/share/metasploit-framework/modules/ -name "*$1*" | cut -d "/" -f 6- | sed s/.rb//g | sed s/.rb//g | sed s/exploits/exploit/g
-                                                                echo ${PADDING}
-                                                                      echo -e "EXPLOIT-DB FILES\nPATH: ${DIR_EXDB}"
-                                                                            echo ${PADDING}
-                                                                                  # Find exploitdb
-                                                                                        cat ${DIR_EXDB}/files_exploits.csv | grep "$1" | cut -d "," -f 3,2 | sed s/,/\ /g
-                                                                                              echo ${PADDING}
-                                                                                                    echo -e "NMAP SCRIPTS\nPATH: ${DIR_NMAP}"
-                                                                                                          echo ${PADDING}
-                                                                                                                # Find nmap scripts
-                                                                                                                      find /usr/share/nmap/scripts/ -name "*$1*"
-                                                                                                                          fi
+    then
+      usage
+    else
+      echo ${PADDING}
+      echo -e "MSF MODULES\nPATH: ${DIR_MSF}"
+      echo ${PADDING}
+      # Find msf modules
+      find /usr/share/metasploit-framework/modules/ -name "*$1*" | cut -d "/" -f 6- | sed s/.rb//g | sed s/.rb//g | sed s/exploits/exploit/g
+      echo ${PADDING}
+      echo -e "EXPLOIT-DB FILES\nPATH: ${DIR_EXDB}"
+      echo ${PADDING}
+      # Find exploitdb
+      cat ${DIR_EXDB}/files_exploits.csv | grep "$1" | cut -d "," -f 3,2 | sed s/,/\ /g
+      echo ${PADDING}
+      echo -e "NMAP SCRIPTS\nPATH: ${DIR_NMAP}"
+      echo ${PADDING}
+      # Find nmap scripts
+      find /usr/share/nmap/scripts/ -name "*$1*"
+  fi
 
